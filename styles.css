@@ -1,0 +1,139 @@
+body {
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    height: 100vh;
+    /* 100% da altura da viewport */
+    margin: 0;
+    /* Remove margens padrão do body */
+
+    background-image: url('woodsmajestic.png');
+    background-size: cover;
+    /* Ensures the background image covers the entire viewport */
+    background-position: center;
+    /* Centers the background image */
+}
+
+.input-container {
+    margin-top: 1px;
+    position: relative;
+    width: 100%;
+    height: 57px;
+    /* overflow: hidden; */
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.arrow {
+    width: 20px;
+    height: 30px;
+    background-image: url('SetaMount.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 4;
+}
+
+.yellow-area {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    width: 10px;
+    height: 18px;
+    background-color: yellow;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.btn-reset {
+    padding-top: 26px;
+    left: 26%;
+    position: relative;
+    z-index: 5;
+}
+
+.logo {
+    position: relative;
+    left: 42% !important;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-button {
+    position: relative;
+    z-index: 3;
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.button-image {
+    position: absolute;
+    top: -41px;
+    left: -31%;
+    width: 137%;
+    height: 354%;
+    z-index: 3;
+}
+
+.png-overlay {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    /* Place PNG image above logo */
+}
+
+/* Estilo medieval para o botão Resetar */
+#btnreset {
+    background-color: #8B4513;
+    color: #fff;
+    border: 2px solid #5e2e09;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1px 1px #5e2e09;
+    border-radius: 15px;
+    /* Adicionando bordas arredondadas */
+}
+
+#btnreset:hover {
+    background-color: #5e2e09;
+    border-color: #8B4513;
+    text-shadow: none;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
