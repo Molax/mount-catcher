@@ -218,11 +218,12 @@
             }, 700);
         }
 
-        // Função para verificar se a ponta da seta está alinhada com a área amarela
         function isAligned(arrowRect, yellowRect) {
             const arrowTipCenterX = arrowRect.left + arrowRect.width / 2;
+            const margin = 1; // Define a margem de 1 pixel
 
-            if (arrowTipCenterX >= yellowRect.left && arrowTipCenterX <= yellowRect.right) {
+            // Verifica se o centro da ponta da seta está dentro da margem de erro
+            if (arrowTipCenterX >= yellowRect.left - margin && arrowTipCenterX <= yellowRect.right + margin) {
                 return true;
             } else {
                 return false;
@@ -233,7 +234,7 @@
         function moveYellowArea() {
             const inputRect = input.getBoundingClientRect();
             const maxWidth = inputRect.width - yellowArea.offsetWidth;
-            const margin = 14;
+            const margin = 17;
 
             const newX = Math.random() * (maxWidth - 2 * margin) + margin;
 
@@ -286,7 +287,7 @@
                 arrowDirection = 1;
             }
         }
-        
+
 
         // Adiciona listeners de eventos
         function addEventListeners() {
