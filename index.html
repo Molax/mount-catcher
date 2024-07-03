@@ -18,8 +18,10 @@
             /* Remove margens padrão do body */
 
             background-image: url('woods.jpg');
-            background-size: cover; /* Ensures the background image covers the entire viewport */
-            background-position: center; /* Centers the background image */
+            background-size: cover;
+            /* Ensures the background image covers the entire viewport */
+            background-position: center;
+            /* Centers the background image */
         }
 
         .input-container {
@@ -41,21 +43,6 @@
             position: relative;
             z-index: 2;
         }
-
-        /* .arrow {
-
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 30px solid red;
-            position: absolute;
-            top: 5px;
-            left: 0;
-            transform: translateX(0);
-            z-index: 3;
-
-        } */
 
         .arrow {
             width: 20px;
@@ -125,7 +112,8 @@
             top: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1; /* Place PNG image above logo */
+            z-index: 1;
+            /* Place PNG image above logo */
         }
     </style>
 </head>
@@ -133,7 +121,7 @@
 <body>
 
     <div>
-        
+
         <div>
             <img class="logo" src="logo.gif" alt="Logo">
             <img class="png-overlay" src="wartale.png" alt="Overlay PNG">
@@ -280,12 +268,34 @@
             }
         }
 
+        // Função para lidar com o evento de toque na tela
+        function handleTouchStart(event) {
+            event.preventDefault(); // Evita o comportamento padrão do toque (como zoom)
+
+            const arrowRect = arrow.getBoundingClientRect();
+            const yellowRect = yellowArea.getBoundingClientRect();
+
+            if (isAligned(arrowRect, yellowRect)) {
+                increaseSpeed(1.1);
+                moveYellowArea();
+                arrowPosition = 0;
+                arrowDirection = 1;
+            } else {
+                pauseForOneSecond();
+                arrowPosition = 0;
+                arrowDirection = 1;
+            }
+        }
+        
+
         // Adiciona listeners de eventos
         function addEventListeners() {
             const resetButton = document.getElementById('btnreset');
             resetButton.addEventListener('click', handleResetButtonClick);
 
             document.addEventListener('keydown', handleKeyDown);
+
+            document.addEventListener('touchstart', handleTouchStart);
         }
 
         // Inicia a animação da seta e adiciona os listeners de eventos
