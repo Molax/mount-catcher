@@ -13,7 +13,7 @@ let speedFactor = 1;
 let isPaused = false;
 let isMoving = false; // Adicionado para controle de movimento da seta
 let timerId;
-let timeLeft = 12;
+let timeLeft = 10;
 
 // Funções de manipulação da barra amarela
 function diminuiTamanhoDaBarra() {
@@ -106,7 +106,7 @@ function handleStartButtonClick() {
         moveArrow(); // Reinicia a animação
 
         // Reinicia o temporizador
-        timeLeft = 12;
+        timeLeft = 10;
         timerElement.textContent = timeLeft;
         timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
         timerElement.style.backgroundColor = '#000'; // Resetando a cor de fundo para preto completo
@@ -116,7 +116,7 @@ function handleStartButtonClick() {
             timerElement.textContent = timeLeft;
 
             // Ajusta dinamicamente a largura do temporizador conforme o tempo restante
-            timerElement.style.width = `calc(${(timeLeft / 12) * 90}% - 4px)`; // Ajuste na largura
+            timerElement.style.width = `calc(${(timeLeft / 10) * 90}% - 8px)`; // Ajuste na largura
             timerElement.style.backgroundColor = `rgb(${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)})`; // Ajuste na cor de fundo
 
             if (timeLeft <= 0) {
@@ -148,7 +148,7 @@ function handleResetButtonClick() {
 
     // Reseta o temporizador
     clearInterval(timerId);
-    timeLeft = 12;
+    timeLeft = 10;
     timerElement.textContent = timeLeft;
     timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
 }
@@ -172,7 +172,7 @@ function handleKeyDown(event) {
             }
 
             // Reinicia o temporizador e seu fundo imediatamente
-            timeLeft = 12;
+            timeLeft = 10;
             timerElement.textContent = timeLeft;
             timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
             timerElement.style.backgroundColor = '#000'; // Resetando o fundo para preto completo
@@ -182,7 +182,7 @@ function handleKeyDown(event) {
                 timerElement.textContent = timeLeft;
 
                 // Ajusta dinamicamente a largura do temporizador conforme o tempo restante
-                timerElement.style.width = `calc(${(timeLeft / 12) * 90}% - 4px)`; // Ajuste na largura
+                timerElement.style.width = `calc(${(timeLeft / 10) * 90}% - 4px)`; // Ajuste na largura
                 timerElement.style.backgroundColor = `rgb(${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)})`; // Ajuste na cor de fundo
 
                 if (timeLeft <= 0) {
