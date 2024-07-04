@@ -1,174 +1,175 @@
- // Elementos do DOM
- const input = document.getElementById('inputText');
- const arrow = document.getElementById('arrow');
- const yellowArea = document.getElementById('yellowArea');
- const dots = Array.from(document.querySelectorAll('.dot'));
+// Elementos do DOM
+const input = document.getElementById('inputText');
+const arrow = document.getElementById('arrow');
+const yellowArea = document.getElementById('yellowArea');
+const dots = Array.from(document.querySelectorAll('.dot'));
+const startButton = document.getElementById('btnstart');
 
- // Variáveis globais para a animação da seta
- let arrowPosition = 0;
- let arrowDirection = 1;
- let speedFactor = 1;
- let isPaused = false;
+// Variáveis globais para a animação da seta
+let arrowPosition = 0;
+let arrowDirection = 1;
+let speedFactor = 1;
+let isPaused = false;
+let isMoving = false; // Adiciona estado de movimento
 
- // Funções de manipulação da barra amarela
- function diminuiTamanhoDaBarra() {
-     const div = document.getElementById('yellowArea');
-     let larguraAtual = div.offsetWidth;
+// Funções de manipulação da barra amarela
+function diminuiTamanhoDaBarra() {
+    const div = document.getElementById('yellowArea');
+    let larguraAtual = div.offsetWidth;
 
-     if (larguraAtual >= 3) {
-         div.style.width = (larguraAtual - 1) + 'px';
-     }
- }
+    if (larguraAtual >= 3) {
+        div.style.width = (larguraAtual - 1) + 'px';
+    }
+}
 
- function resetaTamanhoDaBarra() {
-     document.getElementById('yellowArea').style.width = "10px";
- }
+function resetaTamanhoDaBarra() {
+    document.getElementById('yellowArea').style.width = "10px";
+}
 
- // Função principal para mover a seta
- function moveArrow() {
-     const inputRect = input.getBoundingClientRect();
-     const maxWidth = inputRect.width - arrow.offsetWidth;
+// Função principal para mover a seta
+function moveArrow() {
+    const inputRect = input.getBoundingClientRect();
+    const maxWidth = inputRect.width - arrow.offsetWidth;
 
-     function frame() {
-         if (!isPaused) {
-             arrowPosition += arrowDirection * speedFactor;
+    function frame() {
+        if (isMoving && !isPaused) {
+            arrowPosition += arrowDirection * speedFactor;
 
-             // Verifica se a seta atingiu as bordas
-             if (arrowPosition >= maxWidth) {
-                 arrowDirection = -1;  // Muda a direção para mover para a esquerda
-             } else if (arrowPosition <= 0) {
-                 arrowDirection = 1;  // Muda a direção para mover para a direita
-             }
+            // Verifica se a seta atingiu as bordas
+            if (arrowPosition >= maxWidth) {
+                arrowDirection = -1;  // Muda a direção para mover para a esquerda
+            } else if (arrowPosition <= 0) {
+                arrowDirection = 1;  // Muda a direção para mover para a direita
+            }
 
-             // Atualiza a posição da seta
-             arrow.style.left = arrowPosition + 'px';
-         }
+            // Atualiza a posição da seta
+            arrow.style.left = arrowPosition + 'px';
+        }
 
-         // Solicita o próximo quadro de animação
-         requestAnimationFrame(frame);
-     }
+        // Solicita o próximo quadro de animação
+        requestAnimationFrame(frame);
+    }
 
-     // Inicia o loop de animação
-     requestAnimationFrame(frame);
- }
+    // Inicia o loop de animação
+    requestAnimationFrame(frame);
+}
 
- // Função para aumentar a velocidade da seta
- function increaseSpeed(factor) {
-     speedFactor *= factor;
- }
+// Função para aumentar a velocidade da seta
+function increaseSpeed(factor) {
+    speedFactor *= factor;
+}
 
- function resetSpeed(){
+function resetSpeed(){
     speedFactor = 1;
- }
+}
 
- // Função para pausar a animação por um segundo
- function pauseForOneSecond() {
-     isPaused = true;
-     setTimeout(() => {
-         isPaused = false;
-     }, 700);
- }
+// Função para pausar a animação por um segundo
+function pauseForOneSecond() {
+    isPaused = true;
+    setTimeout(() => {
+        isPaused = false;
+    }, 700);
+}
 
- function isAligned(arrowRect, yellowRect) {
-     const arrowTipCenterX = arrowRect.left + arrowRect.width / 2;
-     const margin = 1; // Define a margem de 1 pixel
+function isAligned(arrowRect, yellowRect) {
+    const arrowTipCenterX = arrowRect.left + arrowRect.width / 2;
+    const margin = 1; // Define a margem de 1 pixel
 
-     // Verifica se o centro da ponta da seta está dentro da margem de erro
-     if (arrowTipCenterX >= yellowRect.left - margin && arrowTipCenterX <= yellowRect.right + margin) {
-         return true;
-     } else {
-         return false;
-     }
- }
+    // Verifica se o centro da ponta da seta está dentro da margem de erro
+    if (arrowTipCenterX >= yellowRect.left - margin && arrowTipCenterX <= yellowRect.right + margin) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
- // Função para mover a área amarela para uma posição aleatória com margem nos extremos
- function moveYellowArea() {
-     const inputRect = input.getBoundingClientRect();
-     const maxWidth = inputRect.width - yellowArea.offsetWidth;
-     const margin = 17;
+// Função para mover a área amarela para uma posição aleatória com margem nos extremos
+function moveYellowArea() {
+    const inputRect = input.getBoundingClientRect();
+    const maxWidth = inputRect.width - yellowArea.offsetWidth;
+    const margin = 17;
 
-     const newX = Math.random() * (maxWidth - 2 * margin) + margin;
+    const newX = Math.random() * (maxWidth - 2 * margin) + margin;
 
-     yellowArea.style.left = newX + 'px';
+    yellowArea.style.left = newX + 'px';
 
-     diminuiTamanhoDaBarra();
- }
+    diminuiTamanhoDaBarra();
+}
 
- // Função para lidar com o clique no botão de reset
- function handleResetButtonClick() {
-
-    //resetaTamanhoDaBarra()
-    //pauseForOneSecond();
-   // resetSpeed()
-    //arrowPosition = 0;
-   // arrowDirection = 1;
+// Função para lidar com o clique no botão de reset
+function handleResetButtonClick() {
     location.reload(); // Recarrega a página (resetar)
-     // resetaTamanhoDaBarra();
-     // resetSpeed();
- }
+}
 
- // Função para lidar com o evento de pressionar tecla
- function handleKeyDown(event) {
-     if (event.key === ' ') { // Verifica se a tecla pressionada é o espaço
-         const arrowRect = arrow.getBoundingClientRect();
-         const yellowRect = yellowArea.getBoundingClientRect();
+// Função para iniciar o movimento da seta
+function handleStartButtonClick() {
+    isMoving = true;
+}
 
-         if (isAligned(arrowRect, yellowRect)) {
-             increaseSpeed(1.1);
-             moveYellowArea();
-             arrowPosition = 0;
-             arrowDirection = 1;
+// Função para lidar com o evento de pressionar tecla
+function handleKeyDown(event) {
+    if (event.key === ' ') { // Verifica se a tecla pressionada é o espaço
+        const arrowRect = arrow.getBoundingClientRect();
+        const yellowRect = yellowArea.getBoundingClientRect();
 
-             const nextDot = dots.find(dot => !dot.classList.contains('active'));
-             if (nextDot) {
-                 nextDot.classList.add('active');
-             }
-         } else {
-             pauseForOneSecond();
-             arrowPosition = 0;
-             arrowDirection = 1;
-         }
-     }
- }
+        if (isAligned(arrowRect, yellowRect)) {
+            increaseSpeed(1.1);
+            moveYellowArea();
+            arrowPosition = 0;
+            arrowDirection = 1;
 
- // Função para lidar com o evento de toque na tela
- function handleTouchStart(event) {
-     event.preventDefault(); // Evita o comportamento padrão do toque (como zoom)
+            const nextDot = dots.find(dot => !dot.classList.contains('active'));
+            if (nextDot) {
+                nextDot.classList.add('active');
+            }
+        } else {
+            pauseForOneSecond();
+            arrowPosition = 0;
+            arrowDirection = 1;
+        }
+    }
+}
 
-     const arrowRect = arrow.getBoundingClientRect();
-     const yellowRect = yellowArea.getBoundingClientRect();
+// Função para lidar com o evento de toque na tela
+function handleTouchStart(event) {
+    event.preventDefault(); // Evita o comportamento padrão do toque (como zoom)
 
-     if (isAligned(arrowRect, yellowRect)) {
-         increaseSpeed(1.1);
-         moveYellowArea();
-         arrowPosition = 0;
-         arrowDirection = 1;
-     } else {
-         pauseForOneSecond();
-         arrowPosition = 0;
-         arrowDirection = 1;
-     }
- }
+    const arrowRect = arrow.getBoundingClientRect();
+    const yellowRect = yellowArea.getBoundingClientRect();
 
+    if (isAligned(arrowRect, yellowRect)) {
+        increaseSpeed(1.1);
+        moveYellowArea();
+        arrowPosition = 0;
+        arrowDirection = 1;
+    } else {
+        pauseForOneSecond();
+        arrowPosition = 0;
+        arrowDirection = 1;
+    }
+}
 
- // Adiciona listeners de eventos
- function addEventListeners() {
-     const resetButton = document.getElementById('btnreset');
-     resetButton.addEventListener('click', handleResetButtonClick);
+// Adiciona listeners de eventos
+function addEventListeners() {
+    const resetButton = document.getElementById('btnreset');
+    resetButton.addEventListener('click', handleResetButtonClick);
 
-     document.addEventListener('keydown', handleKeyDown);
+    const startButton = document.getElementById('btnstart');
+    startButton.addEventListener('click', handleStartButtonClick);
 
-     document.addEventListener('touchstart', handleTouchStart);
- }
+    document.addEventListener('keydown', handleKeyDown);
 
- // Inicia a animação da seta e adiciona os listeners de eventos
- function initialize() {
-     moveArrow();
-     addEventListeners();
+    document.addEventListener('touchstart', handleTouchStart);
+}
 
-     const currentYear = new Date().getFullYear();
-     document.getElementById('currentYear').textContent = currentYear;
- }
+// Inicia a animação da seta e adiciona os listeners de eventos
+function initialize() {
+    moveArrow();
+    addEventListeners();
 
- // Chama a função de inicialização ao carregar a página
- initialize();
+    const currentYear = new Date().getFullYear();
+    document.getElementById('currentYear').textContent = currentYear;
+}
+
+// Chama a função de inicialização ao carregar a página
+initialize();
