@@ -109,25 +109,26 @@ function handleStartButtonClick() {
         timeLeft = 10;
         timerElement.textContent = timeLeft;
         timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
-        timerElement.style.backgroundColor = '#000'; // Resetando a cor de fundo para preto completo
-
+        updateTimerText(); // Atualiza o texto do temporizador
+        clearInterval(timerId);
         timerId = setInterval(() => {
             timeLeft--;
             timerElement.textContent = timeLeft;
 
             // Ajusta dinamicamente a largura do temporizador conforme o tempo restante
-            timerElement.style.width = `calc(${(timeLeft / 10) * 90}% - 8px)`; // Ajuste na largura
-            timerElement.style.backgroundColor = `rgb(${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)})`; // Ajuste na cor de fundo
+            timerElement.style.width = `calc(${(timeLeft / 10) * 100}% - 8px)`; // Ajuste na largura
 
             if (timeLeft <= 0) {
                 clearInterval(timerId);
                 handleResetButtonClick();
             }
+
+            updateTimerText(); // Atualiza o texto do temporizador
         }, 1000);
     }
 }
 
-// Função para lidar com o clique no botão de resetar
+// Função para lidar com o evento de resetar
 function handleResetButtonClick() {
     // Esvazia as bolinhas
     dots.forEach(dot => dot.classList.remove('active'));
@@ -150,7 +151,8 @@ function handleResetButtonClick() {
     clearInterval(timerId);
     timeLeft = 10;
     timerElement.textContent = timeLeft;
-    timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
+    timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100% instantaneamente
+    updateTimerText(); // Atualiza o texto do temporizador
 }
 
 
@@ -166,29 +168,31 @@ function handleKeyDown(event) {
             arrowPosition = 0;
             arrowDirection = 1;
 
-            const nextDot = dots.find(dot => !dot.classList.contains('active'));
+            // Encontra a próxima bolinha não ativa da direita para a esquerda
+            const nextDot = dots.slice().reverse().find(dot => !dot.classList.contains('active'));
             if (nextDot) {
                 nextDot.classList.add('active');
             }
 
-            // Reinicia o temporizador e seu fundo imediatamente
+            // Reinicia o temporizador imediatamente
             timeLeft = 10;
             timerElement.textContent = timeLeft;
             timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
-            timerElement.style.backgroundColor = '#000'; // Resetando o fundo para preto completo
+            updateTimerText(); // Atualiza o texto do temporizador
             clearInterval(timerId); // Para o temporizador atual, se estiver em execução
             timerId = setInterval(() => {
                 timeLeft--;
                 timerElement.textContent = timeLeft;
 
                 // Ajusta dinamicamente a largura do temporizador conforme o tempo restante
-                timerElement.style.width = `calc(${(timeLeft / 10) * 90}% - 4px)`; // Ajuste na largura
-                timerElement.style.backgroundColor = `rgb(${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)})`; // Ajuste na cor de fundo
+                timerElement.style.width = `calc(${(timeLeft / 10) * 100}% - 8px)`; // Ajuste na largura
 
                 if (timeLeft <= 0) {
                     clearInterval(timerId);
                     handleResetButtonClick();
                 }
+
+                updateTimerText(); // Atualiza o texto do temporizador
             }, 1000);
         } else {
             pauseForOneSecond();
@@ -196,6 +200,12 @@ function handleKeyDown(event) {
             arrowDirection = 1;
         }
     }
+}
+
+// Função para atualizar o texto do temporizador
+function updateTimerText() {
+    const timerText = document.getElementById('timerText');
+    timerText.textContent = `${timeLeft}s`;
 }
 
 // Função para lidar com o evento de toque na tela

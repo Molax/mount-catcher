@@ -149,7 +149,7 @@ footer {
 }
 
 .dot.active {
-    background-color: #FDF01B;
+    background-color: #e7e708;
 }
 
 .dots{
@@ -187,7 +187,7 @@ footer {
 .timer-container {
     height: 7px;
     width: 87%;
-    margin: -3px auto;
+    margin: -5px 6px;
     background-color: #fff;
     border: 0px solid white;
     border-radius: 31px;
@@ -206,4 +206,11 @@ footer {
     transition: width 1s linear, background-color 1s linear;
     width: 100%;
     background-color: #5e2e09 !important;
+}
+
+.timercount{
+    position: relative;
+    z-index: 6;
+    left: 91%;
+    padding-bottom: 4px;
 }
