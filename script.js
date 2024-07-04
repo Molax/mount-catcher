@@ -2,6 +2,7 @@
  const input = document.getElementById('inputText');
  const arrow = document.getElementById('arrow');
  const yellowArea = document.getElementById('yellowArea');
+ const dots = Array.from(document.querySelectorAll('.dot'));
 
  // Variáveis globais para a animação da seta
  let arrowPosition = 0;
@@ -56,6 +57,10 @@
      speedFactor *= factor;
  }
 
+ function resetSpeed(){
+    speedFactor = 1;
+ }
+
  // Função para pausar a animação por um segundo
  function pauseForOneSecond() {
      isPaused = true;
@@ -91,7 +96,13 @@
 
  // Função para lidar com o clique no botão de reset
  function handleResetButtonClick() {
-     location.reload(); // Recarrega a página (resetar)
+
+    //resetaTamanhoDaBarra()
+    //pauseForOneSecond();
+   // resetSpeed()
+    //arrowPosition = 0;
+   // arrowDirection = 1;
+    location.reload(); // Recarrega a página (resetar)
      // resetaTamanhoDaBarra();
      // resetSpeed();
  }
@@ -107,6 +118,11 @@
              moveYellowArea();
              arrowPosition = 0;
              arrowDirection = 1;
+
+             const nextDot = dots.find(dot => !dot.classList.contains('active'));
+             if (nextDot) {
+                 nextDot.classList.add('active');
+             }
          } else {
              pauseForOneSecond();
              arrowPosition = 0;
