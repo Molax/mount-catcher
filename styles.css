@@ -55,7 +55,7 @@ input {
     left: 50%;
     width: 10px;
     height: 18px;
-    background-color: yellow;
+    background-color: #01F6C7;
     transform: translate(-50%, -50%);
     z-index: 3;
 }
@@ -149,7 +149,7 @@ footer {
 }
 
 .dot.active {
-    background-color: #8B4513;
+    background-color: #e7e708;
 }
 
 .dots{
