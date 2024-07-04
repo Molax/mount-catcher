@@ -3,16 +3,17 @@ const input = document.getElementById('inputText');
 const arrow = document.getElementById('arrow');
 const yellowArea = document.getElementById('yellowArea');
 const dots = Array.from(document.querySelectorAll('.dot'));
-const startButton = document.getElementById('btnstart');
-const resetButton = document.getElementById('btnreset');
+const timerElement = document.getElementById('timer');
+const timerBackground = document.querySelector('.timer-background');
 
 // Variáveis globais para a animação da seta
 let arrowPosition = 0;
 let arrowDirection = 1;
 let speedFactor = 1;
 let isPaused = false;
-let isMoving = false; // Adiciona estado de movimento
-let animationFrameId; // Adiciona ID do quadro de animação
+let isMoving = false; // Adicionado para controle de movimento da seta
+let timerId;
+let timeLeft = 12;
 
 // Funções de manipulação da barra amarela
 function diminuiTamanhoDaBarra() {
@@ -34,7 +35,7 @@ function moveArrow() {
     const maxWidth = inputRect.width - arrow.offsetWidth;
 
     function frame() {
-        if (isMoving && !isPaused) {
+        if (!isPaused && isMoving) {
             arrowPosition += arrowDirection * speedFactor;
 
             // Verifica se a seta atingiu as bordas
@@ -53,7 +54,7 @@ function moveArrow() {
     }
 
     // Inicia o loop de animação
-    animationFrameId = requestAnimationFrame(frame);
+    requestAnimationFrame(frame);
 }
 
 // Função para aumentar a velocidade da seta
@@ -61,7 +62,7 @@ function increaseSpeed(factor) {
     speedFactor *= factor;
 }
 
-function resetSpeed(){
+function resetSpeed() {
     speedFactor = 1;
 }
 
@@ -98,7 +99,35 @@ function moveYellowArea() {
     diminuiTamanhoDaBarra();
 }
 
-// Função para lidar com o clique no botão de reset
+// Função para lidar com o clique no botão de iniciar
+function handleStartButtonClick() {
+    if (!isMoving) {
+        isMoving = true;
+        moveArrow(); // Reinicia a animação
+
+        // Reinicia o temporizador
+        timeLeft = 12;
+        timerElement.textContent = timeLeft;
+        timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
+        timerElement.style.backgroundColor = '#000'; // Resetando a cor de fundo para preto completo
+
+        timerId = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+
+            // Ajusta dinamicamente a largura do temporizador conforme o tempo restante
+            timerElement.style.width = `calc(${(timeLeft / 12) * 90}% - 4px)`; // Ajuste na largura
+            timerElement.style.backgroundColor = `rgb(${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)})`; // Ajuste na cor de fundo
+
+            if (timeLeft <= 0) {
+                clearInterval(timerId);
+                handleResetButtonClick();
+            }
+        }, 1000);
+    }
+}
+
+// Função para lidar com o clique no botão de resetar
 function handleResetButtonClick() {
     // Esvazia as bolinhas
     dots.forEach(dot => dot.classList.remove('active'));
@@ -116,15 +145,14 @@ function handleResetButtonClick() {
 
     // Reseta a velocidade
     resetSpeed();
+
+    // Reseta o temporizador
+    clearInterval(timerId);
+    timeLeft = 12;
+    timerElement.textContent = timeLeft;
+    timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
 }
 
-// Função para iniciar o movimento da seta
-function handleStartButtonClick() {
-    if (!isMoving) {
-        isMoving = true;
-        moveArrow(); // Reinicia a animação
-    }
-}
 
 // Função para lidar com o evento de pressionar tecla
 function handleKeyDown(event) {
@@ -142,6 +170,26 @@ function handleKeyDown(event) {
             if (nextDot) {
                 nextDot.classList.add('active');
             }
+
+            // Reinicia o temporizador e seu fundo imediatamente
+            timeLeft = 12;
+            timerElement.textContent = timeLeft;
+            timerElement.style.width = '100%'; // Resetando a largura do temporizador para 100%
+            timerElement.style.backgroundColor = '#000'; // Resetando o fundo para preto completo
+            clearInterval(timerId); // Para o temporizador atual, se estiver em execução
+            timerId = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+
+                // Ajusta dinamicamente a largura do temporizador conforme o tempo restante
+                timerElement.style.width = `calc(${(timeLeft / 12) * 90}% - 4px)`; // Ajuste na largura
+                timerElement.style.backgroundColor = `rgb(${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)}, ${255 - (timeLeft * 21)})`; // Ajuste na cor de fundo
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerId);
+                    handleResetButtonClick();
+                }
+            }, 1000);
         } else {
             pauseForOneSecond();
             arrowPosition = 0;
@@ -171,8 +219,11 @@ function handleTouchStart(event) {
 
 // Adiciona listeners de eventos
 function addEventListeners() {
-    resetButton.addEventListener('click', handleResetButtonClick);
+    const startButton = document.getElementById('btnstart');
+    const resetButton = document.getElementById('btnreset');
+
     startButton.addEventListener('click', handleStartButtonClick);
+    resetButton.addEventListener('click', handleResetButtonClick);
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('touchstart', handleTouchStart);

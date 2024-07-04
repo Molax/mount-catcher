@@ -178,3 +178,24 @@ footer {
 .paddinglogo{
     padding-top: 4%;
 }
+
+.timer-container {
+    width: 95%;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 0px solid white;
+    border-radius: 31px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.timer {
+    font-size: 17px;
+    font-weight: bold;
+    color: brown;
+    padding: 1px;
+    border-radius: 20px;
+    transition: width 1s linear, background-color 1s linear;
+    width: 100%;
+    background-color: #000 !important;
+}
