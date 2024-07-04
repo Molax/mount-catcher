@@ -153,8 +153,11 @@ footer {
 }
 
 .dots{
-    padding-top: 8%;
-    padding-bottom: 7%;
+    position: relative;
+    padding-top: 5%;
+    margin-bottom: -6%;
+    /* top: 9%; */
+    z-index: 5;
 }
 
 #btnstart {
@@ -181,22 +184,25 @@ footer {
 }
 
 .timer-container {
+    height: 7px;
     width: 95%;
-    margin: 20px auto;
+    margin: -3px auto;
     background-color: #fff;
     border: 0px solid white;
     border-radius: 31px;
     overflow: hidden;
     text-align: left;
+    z-index: 6;
+    position: relative;
 }
 
 .timer {
     font-size: 17px;
     font-weight: bold;
-    color: brown;
+    color: #5e2e09;
     padding: 1px;
-    border-radius: 20px;
+    border-radius: 0px;
     transition: width 1s linear, background-color 1s linear;
     width: 100%;
-    background-color: #000 !important;
+    background-color: #5e2e09 !important;
 }
