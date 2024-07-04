@@ -4,6 +4,7 @@ const arrow = document.getElementById('arrow');
 const yellowArea = document.getElementById('yellowArea');
 const dots = Array.from(document.querySelectorAll('.dot'));
 const startButton = document.getElementById('btnstart');
+const resetButton = document.getElementById('btnreset');
 
 // Variáveis globais para a animação da seta
 let arrowPosition = 0;
@@ -11,6 +12,7 @@ let arrowDirection = 1;
 let speedFactor = 1;
 let isPaused = false;
 let isMoving = false; // Adiciona estado de movimento
+let animationFrameId; // Adiciona ID do quadro de animação
 
 // Funções de manipulação da barra amarela
 function diminuiTamanhoDaBarra() {
@@ -47,11 +49,11 @@ function moveArrow() {
         }
 
         // Solicita o próximo quadro de animação
-        requestAnimationFrame(frame);
+        animationFrameId = requestAnimationFrame(frame);
     }
 
     // Inicia o loop de animação
-    requestAnimationFrame(frame);
+    animationFrameId = requestAnimationFrame(frame);
 }
 
 // Função para aumentar a velocidade da seta
@@ -98,12 +100,30 @@ function moveYellowArea() {
 
 // Função para lidar com o clique no botão de reset
 function handleResetButtonClick() {
-    location.reload(); // Recarrega a página (resetar)
+    // Esvazia as bolinhas
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // Reseta a posição da seta e para a animação
+    isMoving = false;
+    cancelAnimationFrame(animationFrameId);
+    arrowPosition = 0;
+    arrowDirection = 1;
+    arrow.style.left = arrowPosition + 'px';
+
+    // Reseta a barra amarela
+    resetaTamanhoDaBarra();
+    moveYellowArea();
+
+    // Reseta a velocidade
+    resetSpeed();
 }
 
 // Função para iniciar o movimento da seta
 function handleStartButtonClick() {
-    isMoving = true;
+    if (!isMoving) {
+        isMoving = true;
+        moveArrow(); // Reinicia a animação
+    }
 }
 
 // Função para lidar com o evento de pressionar tecla
@@ -151,20 +171,15 @@ function handleTouchStart(event) {
 
 // Adiciona listeners de eventos
 function addEventListeners() {
-    const resetButton = document.getElementById('btnreset');
     resetButton.addEventListener('click', handleResetButtonClick);
-
-    const startButton = document.getElementById('btnstart');
     startButton.addEventListener('click', handleStartButtonClick);
 
     document.addEventListener('keydown', handleKeyDown);
-
     document.addEventListener('touchstart', handleTouchStart);
 }
 
 // Inicia a animação da seta e adiciona os listeners de eventos
 function initialize() {
-    moveArrow();
     addEventListeners();
 
     const currentYear = new Date().getFullYear();
