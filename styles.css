@@ -114,9 +114,9 @@ input {
 .png-overlay {
     position: fixed;
     top: 7%;
-    left: 31%;
+    left: 30%;
     /* transform: translate(-50%, -50%); */
-    z-index: 1;
+    /* z-index: 1; */
     width: 37%;
 }
 
