@@ -111,6 +111,18 @@ input {
     z-index: 3;
 }
 
+/* Estilos específicos para dispositivos móveis */
+@media only screen and (max-width: 1070px) {
+    .png-overlay {
+        position: fixed;
+        top: 7%;
+        left: 8% !important;
+        /* transform: translate(-50%, -50%); */
+        /* z-index: 1; */
+        width: 37%;
+    }
+}
+
 .png-overlay {
     position: fixed;
     top: 7%;
