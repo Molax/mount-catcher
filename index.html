@@ -23,11 +23,6 @@
             <div class="dot" id="dot3"></div>
             <div class="dot" id="dot4"></div>
             <div class="dot" id="dot5"></div>
-            <div class="dot" id="dot6"></div>
-            <div class="dot" id="dot7"></div>
-            <div class="dot" id="dot8"></div>
-            <div class="dot" id="dot9"></div>
-            <div class="dot" id="dot10"></div>
         </div>
 
         <div class="areinput">
@@ -47,16 +42,31 @@
                 <div class="timer" id="timer">
                     <div class="timer-bar" id="timerBar"></div>
                 </div>
-                
+
             </div>
             <div class="timercount">
-                <span  id="timerText">10s</span>
+                <span id="timerText">10s</span>
             </div>
-           
+
             <div class="btn-reset">
                 <button id="btnstart">Iniciar</button>
                 <button id="btnreset">Resetar</button>
-                
+
+            </div>
+            <div class="image-selection">
+                <span>Selecione a dificuldade:</span>
+                <div class="image-options">
+                    <img src="Helltusk.png" alt="Imagem 1" class="image-option" data-img="HelltuskShapeMount.png"
+                        data-time="6" data-dots="10">
+                    <img src="Skorpeis.png" alt="Imagem 2" class="image-option" data-img="SkorpeisShapeMount.png"
+                        data-time="7" data-dots="9">
+                    <img src="Rooster.png" alt="Imagem 3" class="image-option" data-img="ChickenShapeMount.png"
+                        data-time="8" data-dots="8">
+                    <img src="Turtle.png" alt="Imagem 4" class="image-option" data-img="TurtleShapeMount.png"
+                        data-time="10" data-dots="6">
+                    <img src="Hopy.png" alt="Imagem 5" class="image-option" data-img="HopyShapeMount.png" data-time="12"
+                        data-dots="5">
+                </div>
             </div>
         </div>
 
@@ -68,7 +78,8 @@
     </footer>
 
 
-
+    <div id="victoryMessage" class="victory-message">Mount catch</div>
+    <div id="failureMessage" class="error-message">Mount Fail</div>
     <script src="script.js"></script>
 
 </body>

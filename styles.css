@@ -61,7 +61,8 @@ input {
 }
 
 .btn-reset {
-    padding-top: 26px;
+    padding-bottom: 12px;
+    padding-top: 12px;
     left: 6%;
     position: relative;
     z-index: 5;
@@ -200,12 +201,12 @@ footer {
 .timer {
     font-size: 17px;
     font-weight: bold;
-    color: #5e2e09;
+    color: #656565;
     padding: 1px;
     border-radius: 0px;
     transition: width 1s linear, background-color 1s linear;
     width: 100%;
-    background-color: #5e2e09 !important;
+    background-color: #656565 !important;
 }
 
 .timercount{
@@ -213,4 +214,46 @@ footer {
     z-index: 6;
     left: 91%;
     padding-bottom: 4px;
+}
+
+.message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.victory-message {
+    display: none; /* Inicialmente escondido */
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0 241 113);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.error-message {
+    display: none; /* Inicialmente escondido */
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 0, 0);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    z-index: 10;
 }
