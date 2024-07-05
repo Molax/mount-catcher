@@ -113,12 +113,11 @@ input {
 
 .png-overlay {
     position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 7%;
+    left: 31%;
+    /* transform: translate(-50%, -50%); */
     z-index: 1;
     width: 37%;
-    /* Place PNG image above logo */
 }
 
 
