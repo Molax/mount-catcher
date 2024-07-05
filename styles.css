@@ -64,6 +64,7 @@ input {
     z-index: 6 !important;
     display: flex;
     position: relative;
+    margin-top: 4%;
 }
 
 .btn-reset button {
@@ -199,10 +200,12 @@ footer {
 }
 
 .timercount{
+    display: inline;
     position: relative;
     z-index: 6;
     left: 91%;
     padding-bottom: 4px;
+    bottom: 4px;
 }
 
 .message {
