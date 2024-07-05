@@ -117,10 +117,10 @@ input {
     .png-overlay {
         position: fixed;
         top: 7%;
-        left: 9% !important;
+        left: 15% !important;
         /* transform: translate(-50%, -50%); */
         /* z-index: 1; */
-        width: 43% !important;
+        width: 64% !important;
     }
 }
 
