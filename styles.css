@@ -116,10 +116,10 @@ input {
     .png-overlay {
         position: fixed;
         top: 7%;
-        left: 8% !important;
+        left: 10% !important;
         /* transform: translate(-50%, -50%); */
         /* z-index: 1; */
-        width: 37%;
+        width: 37% !important;
     }
 }
 
