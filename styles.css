@@ -9,7 +9,7 @@ body {
     margin: 0;
     /* Remove margens padrão do body */
 
-    background-image: url('woodsmajestic.png');
+    background-image: url('HopyBackground.png');
     background-size: cover;
     /* Ensures the background image covers the entire viewport */
     background-position: center;
@@ -60,12 +60,23 @@ input {
     z-index: 3;
 }
 
-.btn-reset {
-    padding-bottom: 12px;
-    padding-top: 12px;
-    left: 6%;
+.btn-reset{
+    z-index: 6 !important;
+    display: flex;
     position: relative;
-    z-index: 5;
+}
+
+.btn-reset button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btn-reset button img {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Mantém a proporção */
+    cursor: pointer;
+    /* Adicione outros estilos conforme necessário */
 }
 
 .logo {
@@ -101,7 +112,7 @@ input {
 }
 
 .png-overlay {
-    position: absolute;
+    position: fixed;
     top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -109,25 +120,7 @@ input {
     /* Place PNG image above logo */
 }
 
-/* Estilo medieval para o botão Resetar */
-#btnreset {
-    background-color: #8B4513;
-    color: #fff;
-    border: 2px solid #5e2e09;
-    padding: 10px 20px;
-    font-size: 17px;
-    cursor: pointer;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 1px 1px #5e2e09;
-    border-radius: 15px;
-    /* Adicionando bordas arredondadas */
-}
 
-#btnreset:hover {
-    background-color: #5e2e09;
-    border-color: #8B4513;
-    text-shadow: none;
-}
 
 footer {
     text-align: center;
@@ -162,24 +155,8 @@ footer {
     z-index: 5;
 }
 
-#btnstart {
-    background-color: #8B4513;
-    color: #fff;
-    border: 2px solid #5e2e09;
-    padding: 10px 20px;
-    font-size: 17px;
-    cursor: pointer;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 1px 1px #5e2e09;
-    border-radius: 15px;
-    margin-left: 10px; /* Espaço entre os botões */
-}
 
-#btnstart:hover {
-    background-color: #5e2e09;
-    border-color: #8B4513;
-    text-shadow: none;
-}
+
 
 .paddinglogo{
     padding-top: 4%;
@@ -256,4 +233,21 @@ footer {
     border-radius: 10px;
     font-size: 24px;
     z-index: 10;
+}
+
+.image-option:hover {
+    border: 2px solid #5e2e09; /* Adiciona a borda ao passar o mouse */
+    padding: 2px; /* Opcional: aumenta o padding para a borda não cobrir a imagem */
+}
+
+.image-selection{
+    margin-top: 4%;
+    position: relative;
+    padding: 4px;
+    color: white;
+    border: 2px solid #1b5168;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    /* background-color: #275225; */
+    left: -8%;
+    top: 0%;
 }
