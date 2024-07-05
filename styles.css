@@ -117,6 +117,7 @@ input {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    width: 37%;
     /* Place PNG image above logo */
 }
 
