@@ -63,7 +63,7 @@ function increaseSpeed(factor) {
 }
 
 function resetSpeed() {
-    speedFactor = 3;
+    speedFactor = 1;
 }
 
 function pauseForOneSecond() {
