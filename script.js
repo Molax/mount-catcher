@@ -16,7 +16,11 @@ let isPaused = false;
 let isMoving = false;
 let timerId;
 let timeLeft = 10;
-let timerPerMonster = 10;
+let timerPerMonster = 12;
+
+function changeBackground(backgroundImagePath) {
+    document.body.style.backgroundImage = `url('${backgroundImagePath}')`;
+    }
 
 function diminuiTamanhoDaBarra() {
     const div = document.getElementById('yellowArea');
@@ -59,7 +63,7 @@ function increaseSpeed(factor) {
 }
 
 function resetSpeed() {
-    speedFactor = 1;
+    speedFactor = 3;
 }
 
 function pauseForOneSecond() {
@@ -265,10 +269,11 @@ function handleFailure() {
 }
 
 // Função para atualizar as configurações do jogo com base na imagem selecionada
-function updateGameSettings(newTime, newDotsCount,imagePath) {
+function updateGameSettings(newTime, newDotsCount, imagePath) {
 
     const buttonImage = document.querySelector('.button-image');
     buttonImage.src = imagePath; // Atualiza a imagem de fundo do botão
+
     // Atualiza o tempo do temporizador
     timerPerMonster = newTime;
     timeLeft = newTime;
@@ -280,6 +285,8 @@ function updateGameSettings(newTime, newDotsCount,imagePath) {
     resetDots(newDotsCount);
 
     handleResetButtonClick();
+
+
 }
 
 // Função para resetar a quantidade de bolinhas com base na imagem selecionada
@@ -318,7 +325,7 @@ function addEventListeners() {
             const dotsCount = parseInt(option.getAttribute('data-dots'), 10);
             const imagePath = option.getAttribute('data-img');
             // Atualiza o temporizador e a quantidade de bolinhas
-            updateGameSettings(time, dotsCount ,imagePath);
+            updateGameSettings(time, dotsCount , imagePath);
         });
     });
 

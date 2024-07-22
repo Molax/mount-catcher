@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://wartaletrainer.com/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Trainer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://wartaletrainer.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://wartaletrainer.com/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://wartaletrainer.com/favicon-96x96.png">
+<style type="text/css" id="operaUserStyle"></style></head>
+
+<body>
+    <div>
+        <!-- <img class="logo" src="logo.gif" alt="Logo"> -->
+        <img class="png-overlay" src="Logo/WartaleMountTrainer.png" alt="Overlay PNG">
+    </div>
+    <div class="paddinglogo">
+
+      
+        <div style="
+        position: relative;
+        left: 12%;">
+            <div class="dots">
+                <div class="dot" id="dot1"></div>
+                <div class="dot" id="dot2"></div>
+                <div class="dot" id="dot3"></div>
+                <div class="dot" id="dot4"></div>
+                <div class="dot" id="dot5"></div>
+
+            </div>
+
+            <div class="areinput">
+                <div class="input-container">
+                    <!-- Input -->
+                    <div class="button-container">
+                        <input class="image-button" id="inputText" type="text" disabled="">
+                        <img src="ShapeMount/HopyShapeMount.png" alt="Button Background" class="button-image">
+                    </div>
+
+                    <!-- Setinha -->
+                    <div class="arrow" id="arrow" style="left: 0px;"></div>
+                    <!-- Área amarela -->
+                    <div class="yellow-area" id="yellowArea" style="left: 170.352px; width: 9px;"></div>
+                </div>
+                <div id="timer-container" class="timer-container">
+                    <div class="timer" id="timer" style="width: 100%;" color="white">12</div>
+
+                </div>
+                <div class="timercount">
+                    <span id="timerText" style="color: white">12s</span>
+                </div>
+
+                <div class="btn-reset">
+                    <button id="btnstart" onclick="handleStartButtonClick()">
+                        <img src="Buttons/Start.png" alt="Start">
+                    </button>
+                    <button id="btnreset" onclick="handleResetButtonClick()">
+                        <img src="Buttons/Reset.png" alt="Reset">
+                    </button>
+                </div>
+
+                <div class="image-selection">
+                    <span><center>Select Mount:</span>
+                    <div class="image-options">
+                        <img src="Icons/Kelvezu.png" alt="Imagem 7" class="image-option" data-img="ShapeMount/KelvezuShapeMount.png" data-time="60" data-dots="14" onclick="changeBackground('Background/KelvezuBackground.png')"><br>
+                        <img src="Icons/Helltusk.png" alt="Imagem 1" class="image-option" data-img="ShapeMount/HelltuskShapeMount.png" data-time="6" data-dots="12" onclick="changeBackground('Background/HelltuskBackground.png')">
+                        <img src="Icons/Skorpeis.png" alt="Imagem 2" class="image-option" data-img="ShapeMount/SkorpeisShapeMount.png" data-time="7" data-dots="11" onclick="changeBackground('Background/SkorpeisBackground.png')">
+                        <img src="Icons/Rooster.png" alt="Imagem 3" class="image-option" data-img="ShapeMount/ChickenShapeMount.png" data-time="8" data-dots="10" onclick="changeBackground('Background/ChickenBackground.png')">
+                        <img src="Icons/Horse.png" alt="Imagem 6" class="image-option" data-img="ShapeMount/HorseShapeMount.png" data-time="9" data-dots="8" onclick="changeBackground('Background/HorseBackground.png')">
+                        <img src="Icons/Turtle.png" alt="Imagem 4" class="image-option" data-img="ShapeMount/TurtleShapeMount.png" data-time="10" data-dots="7" onclick="changeBackground('Background/TurtleBackground.png')">
+                        <img src="Icons/Hopy.png" alt="Imagem 5" class="image-option" data-img="ShapeMount/HopyShapeMount.png" data-time="12" data-dots="5" onclick="changeBackground('Background/HopyBackground.png')"></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer id="footer">
+        All Rights Reserved ® Developed by Molax | Designed by MajesticKing © <span id="currentYear">2024</span>
+    </footer>
+
+
+    <div id="victoryMessage" class="victory-message" style="display: none;">Mount Caught</div>
+    <div id="failureMessage" class="error-message">Mount Fail</div>
+    <script src="script.js"></script>
+
+
+
+</body></html>

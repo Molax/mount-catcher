@@ -1,25 +1,19 @@
 body {
     display: flex;
     justify-content: center;
-    /* Centraliza horizontalmente */
+    background-image: url('Background/HopyBackground.png');
     align-items: center;
-    /* Centraliza verticalmente */
     height: 100vh;
-    /* 100% da altura da viewport */
     margin: 0;
-    /* Remove margens padrão do body */
-
-    background-image: url('HopyBackground.png');
     background-size: cover;
-    /* Ensures the background image covers the entire viewport */
     background-position: center;
-    /* Centers the background image */
+    transition: background-image 0.5s ease; /* Adicionando transição para suavizar a troca de imagens */
 }
 
 .input-container {
     margin-top: 1px;
     position: relative;
-    width: 100%;
+    width:100%;
     height: 57px;
     /* overflow: hidden; */
 }
@@ -39,7 +33,7 @@ input {
 .arrow {
     width: 20px;
     height: 30px;
-    background-image: url('SetaMount.png');
+    background-image: url('ShapeMount/SetaMount.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -64,7 +58,8 @@ input {
     z-index: 6 !important;
     display: flex;
     position: relative;
-    margin-top: 4%;
+    margin-top: 2%;
+    left: 2%;
 }
 
 .btn-reset button {
@@ -127,10 +122,10 @@ input {
 .png-overlay {
     position: fixed;
     top: 7%;
-    left: 40%;
+    left: 35%;
     /* transform: translate(-50%, -50%); */
     /* z-index: 1; */
-    width: 22%;
+    width: 28%;
 }
 
 
@@ -160,16 +155,13 @@ footer {
 }
 
 .dots{
-    right: -20%;
+    right: -5%;
     position: relative;
     padding-top: 5%;
     margin-bottom: -6%;
     /* top: 9%; */
     z-index: 5;
 }
-
-
-
 
 .paddinglogo{
     padding-top: 4%;
@@ -189,14 +181,14 @@ footer {
 }
 
 .timer {
-    font-size: 17px;
+    font-size: 8px;
     font-weight: bold;
-    color: #656565;
-    padding: 1px;
+    color: #fff;
+    padding: 8px;
     border-radius: 0px;
     transition: width 1s linear, background-color 1s linear;
     width: 100%;
-    background-color: #656565 !important;
+    background-color: gray !important;
 }
 
 .timercount{
@@ -204,8 +196,8 @@ footer {
     position: relative;
     z-index: 6;
     left: 91%;
-    padding-bottom: 4px;
-    bottom: 4px;
+    padding-bottom: 0px;
+    bottom: 8px;
 }
 
 .message {
@@ -251,18 +243,19 @@ footer {
 }
 
 .image-option:hover {
-    border: 2px solid #5e2e09; /* Adiciona a borda ao passar o mouse */
+    border: 1px solid #fff; /* Adiciona a borda ao passar o mouse */
     padding: 2px; /* Opcional: aumenta o padding para a borda não cobrir a imagem */
 }
 
 .image-selection{
-    margin-top: 4%;
+    margin-top: 10%;
     position: relative;
     padding: 4px;
     color: white;
-    border: 2px solid #1b5168;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
-    /* background-color: #275225; */
+    border-radius: 2px;
+    border: 0px solid #1b5168;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 1.9);
+    background-color: rgba(0,0,0,0.5);
     left: -8%;
     top: 0%;
 }
