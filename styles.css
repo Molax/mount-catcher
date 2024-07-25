@@ -259,3 +259,32 @@ footer {
     left: -8%;
     top: 0%;
 }
+
+.speed-selection {
+    margin-top: 10%;
+    position: relative;
+    padding: 4px;
+    color: white;
+    border-radius: 2px;
+    border: 0px solid #1b5168;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 1.9);
+    background-color: rgba(0,0,0,0.5);
+    left: -8%;
+    top: 0%;
+    text-align: center;
+}
+
+.speed-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.speed-option {
+    background-color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+}

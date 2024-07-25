@@ -17,10 +17,29 @@ let isMoving = false;
 let timerId;
 let timeLeft = 10;
 let timerPerMonster = 12;
+let defaultSpeed = 1;
 
 function changeBackground(backgroundImagePath) {
     document.body.style.backgroundImage = `url('${backgroundImagePath}')`;
-    }
+}
+
+function updateSpeedFactor(newSpeed) {
+    speedFactor = newSpeed;
+    defaultSpeed = newSpeed;
+}
+
+// Add event listeners to speed option buttons
+function addSpeedEventListeners() {
+    const speedOptions = Array.from(document.querySelectorAll('.speed-option'));
+
+    speedOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const speed = parseInt(option.getAttribute('data-speed'), 10);
+            updateSpeedFactor(speed);
+            handleResetButtonClick();
+        });
+    });
+}
 
 function diminuiTamanhoDaBarra() {
     const div = document.getElementById('yellowArea');
@@ -63,7 +82,7 @@ function increaseSpeed(factor) {
 }
 
 function resetSpeed() {
-    speedFactor = 1;
+    speedFactor = defaultSpeed;
 }
 
 function pauseForOneSecond() {
@@ -239,11 +258,9 @@ function handleTouchStart(event) {
 }
 
 function handleVictory() {
-
     setTimeout(() => {
         handleResetButtonClick(); // Resetar o jogo completamente
     }, 500);
-
 
     // Exibir mensagem de vitória
     victoryMessage.style.display = 'block';
@@ -270,7 +287,6 @@ function handleFailure() {
 
 // Função para atualizar as configurações do jogo com base na imagem selecionada
 function updateGameSettings(newTime, newDotsCount, imagePath) {
-
     const buttonImage = document.querySelector('.button-image');
     buttonImage.src = imagePath; // Atualiza a imagem de fundo do botão
 
@@ -285,8 +301,6 @@ function updateGameSettings(newTime, newDotsCount, imagePath) {
     resetDots(newDotsCount);
 
     handleResetButtonClick();
-
-
 }
 
 // Função para resetar a quantidade de bolinhas com base na imagem selecionada
@@ -328,13 +342,12 @@ function addEventListeners() {
             updateGameSettings(time, dotsCount , imagePath);
         });
     });
-
-
 }
-//teste
-function initialize() {
-    addEventListeners();
 
+function initialize() {
+    defaultSpeed = 1;
+    addEventListeners();
+    addSpeedEventListeners(); 
     const currentYear = new Date().getFullYear();
     document.getElementById('currentYear').textContent = currentYear;
 }
