@@ -318,7 +318,7 @@ footer {
     content: attr(title);
     position: absolute;
     bottom: 56%;
-    left: 364%;
+    left: 592%;
     transform: translateX(-50%);
     background-color: #333;
     color: #fff;
