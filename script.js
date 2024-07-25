@@ -163,7 +163,7 @@ function handleKeyDown(event) {
         const yellowRect = yellowArea.getBoundingClientRect();
 
         if (isAligned(arrowRect, yellowRect)) {
-            increaseSpeed(1.1);
+            increaseSpeed(1.09);
             moveYellowArea();
             arrowPosition = 0;
             arrowDirection = 1;
@@ -216,7 +216,7 @@ function handleTouchStart(event) {
     const yellowRect = yellowArea.getBoundingClientRect();
 
     if (isAligned(arrowRect, yellowRect)) {
-        increaseSpeed(1.1);
+        increaseSpeed(1.09);
         moveYellowArea();
         arrowPosition = 0;
         arrowDirection = 1;
