@@ -274,6 +274,8 @@ footer {
     text-align: center;
 }
 
+
+
 .speed-options {
     display: flex;
     justify-content: center;
@@ -287,4 +289,50 @@ footer {
     border-radius: 9px;
     cursor: pointer;
     font-size: 13px;
+}
+
+.twitch-icon-container {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000; /* Ensure it is above other elements */
+}
+
+/* Style for the Twitch icon */
+.twitch-icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Ensure this matches width for a square image or adjust as needed */
+    object-fit: cover; /* Ensures the image fits within the container */
+    border-radius: 50%; /* Optional: rounds corners if the icon is circular */
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* Tooltip styling */
+.twitch-icon-container a {
+    position: relative;
+}
+
+.twitch-icon-container a::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 56%;
+    left: 364%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 6px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.twitch-icon-container a:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
